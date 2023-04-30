@@ -10,3 +10,8 @@ strings = ["one","two","three"]
 
 for str in strings:
 	print (str)
+
+### Reading data from python.txt file
+filename = "python.txt"
+fread = open(filename,"r")
+print (fread.read())
