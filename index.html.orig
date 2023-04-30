@@ -1,0 +1,8 @@
+<h1>This is a test html file from another developer</h1>
+
+<<<<<<< HEAD
+
+<h1>This is a change from developer 11111111</h1>
+=======
+<h1>This is a change from developer 22222</h1>
+>>>>>>> 4fdb223 (Dev 2 changes)
