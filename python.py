@@ -10,17 +10,3 @@ strings = ["one","two","three"]
 
 for str in strings:
 	print (str)
-
-
-# Read the contents of the file
-filename = "python.txt"
-f = open(filename,"r")
-print (f.read())
-
-# Write some data to the file
-fwrite = open(filename,"w")
-fwrite.write("adding some test data")
-
-# Reading the file again
-f = open(filename,"r")
-print (f.read())
