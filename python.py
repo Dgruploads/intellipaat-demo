@@ -11,7 +11,6 @@ strings = ["one","two","three"]
 for str in strings:
 	print (str)
 
-
 #### Dev1 changes ######
 str = "This is an example code and the code is written in python"
 
@@ -21,3 +20,7 @@ for chars in str_split:
   if chars == "code":
     count += 1
 print (count)
+
+## Dev 2 changes ###
+Some dummy changes
+
