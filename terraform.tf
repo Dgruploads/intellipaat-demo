@@ -10,4 +10,5 @@ resource "aws_instance" "example_instance" {
 
 locals {
   name = "some_name"
+  project = "some_project"
 }
