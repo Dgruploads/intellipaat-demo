@@ -5,6 +5,13 @@ pipeline {
     stage ("Build the maven war package") {
       steps {
         node ("build_server") {
+          
+          //Checkout the SCM
+          print ("Downloading the source code from GitHub")
+          checkout scmGit(
+            branches: [[name: '*/maven_branch']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Dgruploads/intellipaat-demo.git']]
+          )
+          
           //Delete and create a new war package
           print ("Delete the old maven package")
           print ("Creating new maven package")
