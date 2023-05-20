@@ -4,7 +4,7 @@ pipeline {
 s3_source = "/home/ubuntu/build_server/workspace/build_pipeline/target/hello-world-webapp.war"
 
   stages {
-    stage ("Build the maven package) {
+    stage ("Build the maven package") {
       steps {
       
         //Delete the old package
@@ -15,7 +15,7 @@ s3_source = "/home/ubuntu/build_server/workspace/build_pipeline/target/hello-wor
       }
     }
     
-    stage "Copy the maven package to S3 bucket") {
+    stage ("Copy the maven package to S3 bucket") {
       steps {
         //Copy the package to S3 bucket
         print ("Copying the new maven package to the S3 bucket")
