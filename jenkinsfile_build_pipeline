@@ -1,7 +1,7 @@
 pipeline {
   agent {label "build_server"}
   
-s3_source = "/home/ubuntu/build_server/workspace/build_pipeline/target/hello-world-webapp.war"
+def s3_source = "/home/ubuntu/build_server/workspace/build_pipeline/target/hello-world-webapp.war"
 
   stages {
     stage ("Build the maven package") {
