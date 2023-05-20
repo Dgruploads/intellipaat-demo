@@ -1,0 +1,26 @@
+pipeline {
+  agent {label "build_server"}
+  
+s3_source = "/home/ubuntu/build_server/workspace/build_pipeline/target/hello-world-webapp.war"
+
+  stages {
+    stage ("Build the maven package) {
+      steps {
+      
+        //Delete the old package
+        print ("Deleting the old maven package")
+        print ("Build the new maven package")
+        sh "mvn clean install"
+        
+      }
+    }
+    
+    stage "Copy the maven package to S3 bucket") {
+      steps {
+        //Copy the package to S3 bucket
+        print ("Copying the new maven package to the S3 bucket")
+        sh "aws s3 cp {$s3_source} s3://dgruploads-package-location"
+      }
+    }
+  }
+}
