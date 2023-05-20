@@ -4,14 +4,16 @@ pipeline {
   stages {
     stage ("Build the maven war package") {
       steps {
-        //Delete and create a new war package
-        print ("Delete the old maven package")
-        print ("Creating new maven package")
-        sh "mvn clean install"
+        node ("build_server") {
+          //Delete and create a new war package
+          print ("Delete the old maven package")
+          print ("Creating new maven package")
+          sh "mvn clean install"
 
-        //Stash the war apackage
-        //print ("Preparing the war package to copy to the deploy server")
-        //stash( includes:"/home/ubuntu/build_server/workspace/single_job_pipeline/target/hello-world-webapp.war"
+          //Stash the war apackage
+          //print ("Preparing the war package to copy to the deploy server")
+          //stash( includes:"/home/ubuntu/build_server/workspace/single_job_pipeline/target/hello-world-webapp.war"
+        }
       }
     }
   }
