@@ -18,10 +18,26 @@ pipeline {
           sh "mvn clean install"
 
           //Stash the war apackage
-          //print ("Preparing the war package to copy to the deploy server")
-          //stash( includes:"/home/ubuntu/build_server/workspace/single_job_pipeline/target/hello-world-webapp.war"
+          print ("Preparing the war package to copy to the deploy server")
+          stash( includes:"/home/ubuntu/build_server/workspace/single_job_pipeline/target/hello-world-webapp.war", name: "package_maven")
         }
       }
     }
+    
+    stage ("Deploy the maven package") {
+      steps {
+        node ("deploy_server") {
+          //Delete the old maven package
+          print ("Deleting the old maven package")
+          sh "rm -rf /home/ubuntu/tomcat/webapps/hello-world-webapp.war"
+          
+          //Unstash the maven package
+          print ("Setting the directory to webapps")
+          dir("/home/ubuntu/tomcat/webapps") {
+            print ("Getting the package from the build server")
+            unstash( name: "package_maven")
+          }
+        }
+     } 
   }
 }
