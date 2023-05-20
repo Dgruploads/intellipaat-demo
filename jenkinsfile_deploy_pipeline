@@ -18,7 +18,7 @@ pipeline {
       
         //Download and copy the maven package
         print ("Downloading the maven package from S3 bucket")
-        sh "aws s3 cp ${s3_source} ${s3_dest}
+        sh "aws s3 cp ${s3_source} ${s3_dest}"
       }
     }
   }
