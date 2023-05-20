@@ -1,0 +1,25 @@
+def s3_source = "s3://dgruploads-package-location/hello-world-webapp.war"
+def s3_dest = "/home/ubuntu/tomcat/webapps"
+
+pipeline {
+  agent {label "deploy_server"}
+  
+  stages {
+  
+    stage ("Delete the old maven package") {
+      steps {
+        print ("Deleting the old maven package")
+        sh "rm -rf /home/ubuntu/tomcat/webapps/hello-world-webapp.war"
+      }
+    }
+    
+    stage ("Download the maven package from S3 bucket") {
+      steps {
+      
+        //Download and copy the maven package
+        print ("Downloading the maven package from S3 bucket")
+        sh "aws s3 cp ${s3_source} ${s3_dest}
+      }
+    }
+  }
+}
