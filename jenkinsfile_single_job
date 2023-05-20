@@ -19,7 +19,8 @@ pipeline {
 
           //Stash the war apackage
           print ("Preparing the war package to copy to the deploy server")
-          stash( includes:"/home/ubuntu/build_server/workspace/single_job_pipeline/target/hello-world-webapp.war", name: "package_maven")
+          //stash( includes:"/home/ubuntu/build_server/workspace/single_job_pipeline/target/hello-world-webapp.war", name: "package_maven")
+          stash( includes:"target/hello-world-webapp.war", name: "package_maven")
         }
       }
     }
