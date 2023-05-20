@@ -1,9 +1,10 @@
+def s3_source = "/home/ubuntu/build_server/workspace/build_pipeline/target/hello-world-webapp.war"
+
 pipeline {
   agent {label "build_server"}
 
-environment {
-  s3_source = "/home/ubuntu/build_server/workspace/build_pipeline/target/hello-world-webapp.war"
-}
+//environment {
+//}
 
   stages {
     stage ("Build the maven package") {
@@ -21,7 +22,7 @@ environment {
       steps {
         //Copy the package to S3 bucket
         print ("Copying the new maven package to the S3 bucket")
-        sh "aws s3 cp env.s3_source s3://dgruploads-package-location"
+        sh "aws s3 cp ${s3_source} s3://dgruploads-package-location"
       }
     }
   }
