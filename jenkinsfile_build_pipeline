@@ -26,4 +26,7 @@ pipeline {
       }
     }
   }
+  
+  build 'Deploy_pipeline'
+  
 }
